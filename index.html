@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Text Buttons</title>
+    <style>
+        button {
+            margin: 5px;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #ddd;
+            border: 1px solid #aaa;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ccc;
+        }
+
+        #copiedMsg {
+            margin-top: 10px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Buttons to copy text -->
+    <button onclick="copyText(text1)">LogTransf</button>
+    <button onclick="copyText(text2)">PowerLawTransf</button>
+    <button onclick="copyText(text3)">Negation</button>
+    <button onclick="copyText(text4)">Contrast Stretching</button>
+    <button onclick="copyText(text5)">Grey Level</button>
+    <button onclick="copyText(text6)">BitPlane</button>
+    <button onclick="copyText(text7)">Discretefourier</button>
+    <button onclick="copyText(text8)">Gaussianlow</button>
+    <button onclick="copyText(text9)">Butterworthlow</button>
+    <button onclick="copyText(text10)">IdealHighPass</button>
+    <button onclick="copyText(text11)">Ideallowpass</button>
+    <button onclick="copyText(text12)">Imageaveraging</button>
+    <button onclick="copyText(text13)">Intensitylevel</button>
+    <button onclick="copyText(text14)">Imageaveraging Addition</button>
+    <button onclick="copyText(text15)">Imagesubtr</button>
+    <button onclick="copyText(text16)">Medianfiltering</button>
+    <button onclick="copyText(text17)">Erosion&Dilation</button>
+    <button onclick="copyText(text18)">Opening&Closing</button>
+    <button onclick="copyText(text19)">BoundaryExtr</button>
+    <button onclick="copyText(text20)">Morphgradient</button>
+    <button onclick="copyText(text21)">Top-hattransf</button>
+    <button onclick="copyText(text22)">Regionfilling</button>
+    <button onclick="copyText(text23)">ReadWritedisp</button>
+    <button onclick="copyText(text24)">PixelValue</button>
+    <button onclick="copyText(text25)">RetrHeigWeid</button>
+    <button onclick="copyText(text26)">Textonimag</button>
+    <button onclick="copyText(text27)">Rectangleonimg</button>
+    <button onclick="copyText(text28)">RGB</button>
+    <button onclick="copyText(text29)">1Colrtoanother</button>
+    <button onclick="copyText(text30)">Pseudofalse</button>
+
+    <!-- Message to show success -->
+    <p id="copiedMsg"></p>
+
+    <script>
+        // Text variables for all 30 codes
+        const text1 = `clc; clear all; disp("Log Transformation Code"); 
+clear all;
+disp"10 Prerana Jadhav"
+a=imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b=double(a);
+subplot(1,2,1);
+imshow(a);
+title('Original image')
+t=10; //constant value
+[m,n]=size(b);
+for i=1:m
+    for j=1:n
+        c(i,j)=t*log(1+b(i,j))
+    end
+end
+subplot(1,2,2);
+imshow(uint8(c));
+title('Log Transformation image')`;
+
+        const text2 = `clc; clear all; disp("Power Law Transformation");
+a=imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b=double(a);
+subplot(1,2,1);
+imshow(a);
+title('Original image')
+gamma=0.8; //constant value
+[m,n]=size(b);
+for i=1:m
+    for j=1:n
+        c(i,j)=255*(b(i,j)/255).^gamma
+    end
+end
+subplot(1,2,2);
+imshow(uint8(c));
+title('Power Law Transformation image')`;
+
+        const text3 = `clc; clear all; disp("Negation Code");
+a=imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b=double(a);
+subplot(1,2,1);
+imshow(a);
+title('Original image')
+for i=1:m
+    for j=1:n
+        c(i,j)=255-b(i,j);
+    end
+end
+subplot(1,2,2);
+imshow(uint8(c));
+title('Negation image')`;
+
+        const text4 = `clc; clear all; disp("Contrast Stretching Code");
+a=imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b=double(a);
+subplot(1,2,1);
+imshow(a);
+title('Original image')
+L=255; %maximum value
+m=128; %minimum value
+for i=1:m
+    for j=1:n
+        c(i,j)=L*(b(i,j)-m)/(255-m);
+    end
+end
+subplot(1,2,2);
+imshow(uint8(c));
+title('Contrast Stretching image')`;
+
+        const text5 = `clc; clear all; disp("Grey Level Code");
+a=imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b=double(a);
+subplot(1,2,1);
+imshow(a);
+title('Original image')
+t=50; %constant value
+for i=1:m
+    for j=1:n
+        c(i,j)=b(i,j)+t;
+    end
+end
+subplot(1,2,2);
+imshow(uint8(c));
+title('Grey Level image')`;
+
+        const text6 = `clc; clear all; disp("Bit Plane Extraction Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+bit_planes = zeros(size(b));
+for i = 1:8
+    bit_planes = bitget(b, i);
+    subplot(1, 2, 2);
+    imshow(bit_planes);
+    title(strcat("Bit Plane ", num2str(i)));
+end`;
+
+        const text7 = `clc; clear all; disp("Discrete Fourier Transform Code");
+a=imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b=double(a);
+subplot(1,2,1);
+imshow(a);
+title('Original image')
+f=fft2(b);
+fshift=fftshift(f);
+subplot(1,2,2);
+imshow(log(abs(fshift)));
+title('Fourier Transformed image')`;
+
+        const text8 = `clc; clear all; disp("Gaussian Low Pass Filter Code");
+a=imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b=double(a);
+[m,n] = size(b);
+subplot(1,2,1);
+imshow(a);
+title('Original Image')
+d0=30; %cutoff frequency
+[u,v] = meshgrid(-n/2:n/2-1, -m/2:m/2-1);
+d = sqrt(u.^2 + v.^2);
+H = exp(-(d.^2)/(2*(d0^2)));
+f = fft2(b);
+fshift = fftshift(f);
+fshift = fshift .* H;
+g = ifft2(fshift);
+subplot(1,2,2);
+imshow(abs(g));
+title('Gaussian Low Pass Filtered Image')`;
+
+        const text9 = `clc; clear all; disp("Butterworth Low Pass Filter Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+[m, n] = size(b);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+d0 = 30; % cutoff frequency
+n = 2; % order of filter
+[u, v] = meshgrid(-n/2:n/2-1, -m/2:m/2-1);
+d = sqrt(u.^2 + v.^2);
+H = 1 ./ (1 + (d./d0).^(2*n));
+f = fft2(b);
+fshift = fftshift(f);
+fshift = fshift .* H;
+g = ifft2(fshift);
+subplot(1, 2, 2);
+imshow(abs(g));
+title("Butterworth Low Pass Filtered Image")`;
+
+        const text10 = `clc; clear all; disp("Ideal High Pass Filter Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+d0 = 30; % cutoff frequency
+[u, v] = meshgrid(-n/2:n/2-1, -m/2:m/2-1);
+d = sqrt(u.^2 + v.^2);
+H = 1 - exp(-(d.^2)/(2*(d0^2)));
+f = fft2(b);
+fshift = fftshift(f);
+fshift = fshift .* H;
+g = ifft2(fshift);
+subplot(1, 2, 2);
+imshow(abs(g));
+title("Ideal High Pass Filtered Image")`;
+
+        const text11 = `clc; clear all; disp("Ideal Low Pass Filter Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+d0 = 30; % cutoff frequency
+[u, v] = meshgrid(-n/2:n/2-1, -m/2:m/2-1);
+d = sqrt(u.^2 + v.^2);
+H = exp(-(d.^2)/(2*(d0^2)));
+f = fft2(b);
+fshift = fftshift(f);
+fshift = fshift .* H;
+g = ifft2(fshift);
+subplot(1, 2, 2);
+imshow(abs(g));
+title("Ideal Low Pass Filtered Image")`;
+
+        const text12 = `clc; clear all; disp("Image Averaging Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+kernel = fspecial('average', [5 5]);
+c = imfilter(b, kernel);
+subplot(1, 2, 2);
+imshow(uint8(c));
+title("Averaged Image")`;
+
+        const text13 = `clc; clear all; disp("Intensity Level Transformation Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+T = 128; % intensity threshold
+c = b > T;
+subplot(1, 2, 2);
+imshow(c);
+title("Intensity Level Transformation")`;
+
+        const text14 = `clc; clear all; disp("Image Averaging Addition Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+kernel = fspecial('average', [5 5]);
+c = imfilter(b, kernel);
+d = b + c;
+subplot(1, 2, 2);
+imshow(uint8(d));
+title("Averaged and Added Image")`;
+
+        const text15 = `clc; clear all; disp("Image Subtraction Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+kernel = fspecial('average', [5 5]);
+c = imfilter(b, kernel);
+d = b - c;
+subplot(1, 2, 2);
+imshow(uint8(d));
+title("Subtracted Image")`;
+
+        const text16 = `clc; clear all; disp("Median Filtering Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+c = medfilt2(b, [5 5]);
+subplot(1, 2, 2);
+imshow(uint8(c));
+title("Median Filtered Image")`;
+
+        const text17 = `clc; clear all; disp("Erosion and Dilation Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+se = strel('disk', 3);
+eroded = imerode(b, se);
+dilated = imdilate(b, se);
+subplot(1, 2, 2);
+imshow(uint8(eroded));
+title("Eroded Image")`;
+
+        const text18 = `clc; clear all; disp("Opening and Closing Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+se = strel('disk', 3);
+opened = imopen(b, se);
+closed = imclose(b, se);
+subplot(1, 2, 2);
+imshow(uint8(opened));
+title("Opened Image")`;
+
+        const text19 = `clc; clear all; disp("Boundary Extraction Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+se = strel('disk', 3);
+boundary = bwboundaries(b);
+subplot(1, 2, 2);
+imshow(boundary);
+title("Boundary Image")`;
+
+        const text20 = `clc; clear all; disp("Morphological Gradient Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+se = strel('disk', 3);
+grad = imgradient(b, 'morphological', se);
+subplot(1, 2, 2);
+imshow(grad);
+title("Morphological Gradient Image")`;
+
+        const text21 = `clc; clear all; disp("Top-Hat Transformation Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+se = strel('disk', 3);
+top_hat = imtophat(b, se);
+subplot(1, 2, 2);
+imshow(top_hat);
+title("Top-Hat Transformed Image")`;
+
+        const text22 = `clc; clear all; disp("Region Filling Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+filled = imfill(b, 'holes');
+subplot(1, 2, 2);
+imshow(filled);
+title("Region Filled Image")`;
+
+        const text23 = `clc; clear all; disp("Read, Write, and Display Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+imwrite(a, 'output_image.jpg');
+imshow(a);
+title('Read and Display Image')`;
+
+        const text24 = `clc; clear all; disp("Pixel Value Transformation Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+b = double(a);
+subplot(1, 2, 1);
+imshow(a);
+title("Original Image");
+b = b + 50; % increase pixel value by 50
+subplot(1, 2, 2);
+imshow(uint8(b));
+title("Pixel Value Transformed Image")`;
+
+        const text25 = `clc; clear all; disp("Retrieve Height and Width Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+[m, n] = size(a);
+disp(['Image height: ', num2str(m)]);
+disp(['Image width: ', num2str(n)])`;
+
+        const text26 = `clc; clear all; disp("Text on Image Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+imshow(a);
+text(10, 10, 'Sample Text', 'Color', 'red', 'FontSize', 12);`;
+
+        const text27 = `clc; clear all; disp("Rectangle on Image Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+imshow(a);
+rectangle('Position', [100, 100, 200, 150], 'EdgeColor', 'r', 'LineWidth', 2);`;
+
+        const text28 = `clc; clear all; disp("RGB Split Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+r = a(:,:,1);
+g = a(:,:,2);
+b = a(:,:,3);
+imshow(r);
+title("Red Channel")`;
+
+        const text29 = `clc; clear all; disp("Color Conversion Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+hsv = rgb2hsv(a);
+imshow(hsv);
+title("Converted Image")`;
+
+        const text30 = `clc; clear all; disp("Pseudocolor Code");
+a = imread("C:\\MSCIT 1\\IP\\image1.jpg");
+imshow(a);
+colormap('jet');
+colorbar;`;
+
+        // Function to copy text to clipboard
+        function copyText(text) {
+            // Use the newer Clipboard API
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    // Display a success message
+                    document.getElementById("copiedMsg").textContent = "Text copied to clipboard!";
+                    
+                    // Clear the message after 2 seconds
+                    setTimeout(() => {
+                        document.getElementById("copiedMsg").textContent = "";
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Error copying text: ', err);
+                    // If there is an error, show a failure message
+                    document.getElementById("copiedMsg").textContent = "Failed to copy text.";
+                    setTimeout(() => {
+                        document.getElementById("copiedMsg").textContent = "";
+                    }, 2000);
+                });
+        }
+    </script>
+</body>
+
+</html>
